@@ -14,10 +14,9 @@ extern "C"
     float right_load_cell_voltage = right_load_cell.get_voltage();
     float speed_sensor_voltage = speed_sensor.get_voltage();
 
-    UART *uart = new UART();
-    // uart.send( payload structure of sensor reading )
-
-    printf("Hello world!\n");
+    printf("%6.4lf", left_load_cell_voltage);
+    printf("%6.4lf", right_load_cell_voltage);
+    printf("%6.4lf", speed_sensor_voltage);
   }
 }
 

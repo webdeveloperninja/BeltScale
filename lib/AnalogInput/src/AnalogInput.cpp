@@ -19,4 +19,5 @@ void AnalogInput::calibration_init()
 
 float AnalogInput::get_voltage()
 {
+  return 1.11;
 }
