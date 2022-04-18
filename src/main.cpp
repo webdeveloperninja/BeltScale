@@ -1,6 +1,9 @@
-#include "AnalogInput.h"
-#include "UART.h"
 #include <stdio.h>
+#include "sdkconfig.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#include "esp_spi_flash.h"
+#include "AnalogInput.h"
 
 extern "C"
 {
@@ -14,9 +17,14 @@ extern "C"
     float right_load_cell_voltage = right_load_cell.get_voltage();
     float speed_sensor_voltage = speed_sensor.get_voltage();
 
-    printf("%6.4lf", left_load_cell_voltage);
-    printf("%6.4lf", right_load_cell_voltage);
-    printf("%6.4lf", speed_sensor_voltage);
+    printf("%.6f", left_load_cell_voltage);
+    printf("\n");
+    printf("%.6f", right_load_cell_voltage);
+    printf("\n");
+    printf("%.6f", speed_sensor_voltage);
+    printf("\n");
+    vTaskDelay(0 / portTICK_PERIOD_MS);
+    fflush(stdout);
   }
 }
 
