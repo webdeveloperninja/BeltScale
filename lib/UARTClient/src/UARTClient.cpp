@@ -41,7 +41,9 @@ void UARTClient::init()
   ESP_ERROR_CHECK(
       uart_driver_install(
           UARTClient::uart_port_num,
-          BUF_SIZE * 2, 0, 0,
+          BUF_SIZE * 2,
+          0,
+          0,
           NULL,
           intr_alloc_flags));
 

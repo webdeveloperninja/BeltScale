@@ -42,7 +42,7 @@ AnalogInput::AnalogInput(adc_atten_t attenuation, adc1_channel_t adc1_channel)
 
 uint32_t adc_reading = 0;
 
-void AnalogInput::calibration_init()
+void AnalogInput::init()
 {
   check_efuse();
   adc1_config_width(ADC_WIDTH_BIT_12);

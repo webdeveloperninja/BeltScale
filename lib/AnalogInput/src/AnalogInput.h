@@ -7,7 +7,7 @@ class AnalogInput
 public:
   AnalogInput(adc_atten_t attenuation, adc1_channel_t adc1_channel);
 
-  void calibration_init();
+  void init();
 
   float get_voltage();
 
