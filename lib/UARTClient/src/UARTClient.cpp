@@ -11,7 +11,7 @@
 
 UARTClient::UARTClient(
     uart_config_t uart_configuration,
-    uart_port_t uart_port_num,
+    int uart_port_num,
     int tx_io_num,
     int rx_io_num,
     int rts_io_num,
@@ -35,6 +35,7 @@ void UARTClient::init()
       .flow_ctrl = UARTClient::uart_configuration.flow_ctrl,
       .source_clk = UARTClient::uart_configuration.source_clk,
   };
+
   int intr_alloc_flags = 0;
 
   ESP_ERROR_CHECK(
@@ -60,4 +61,5 @@ void UARTClient::init()
 
 void UARTClient::transmit(char *payload)
 {
+  uart_write_bytes(UARTClient::uart_port_num, payload, sizeof payload);
 }

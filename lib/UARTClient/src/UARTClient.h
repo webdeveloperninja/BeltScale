@@ -7,7 +7,7 @@ class UARTClient
 public:
   UARTClient(
       uart_config_t uart_configuration,
-      uart_port_t uart_port_num,
+      int uart_port_num,
       int tx_io_num,
       int rx_io_num,
       int rts_io_num,
@@ -19,7 +19,7 @@ public:
 
 private:
   uart_config_t uart_configuration;
-  uart_port_t uart_port_num;
+  int uart_port_num;
   int tx_io_num;
   int rx_io_num;
   int rts_io_num;

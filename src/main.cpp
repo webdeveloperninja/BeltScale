@@ -9,6 +9,21 @@
 
 u_int sensor_sample_rate_minutes = 1;
 
+uart_config_t uart_config = {
+    .baud_rate = 23,
+    .data_bits = UART_DATA_8_BITS,
+    .parity = UART_PARITY_DISABLE,
+    .stop_bits = UART_STOP_BITS_1,
+    .flow_ctrl = UART_HW_FLOWCTRL_DISABLE,
+    .source_clk = UART_SCLK_APB,
+};
+
+int uart_port_number = 34;
+int tx_io_number = 34;
+int rx_io_number = 3;
+int rts_io_number = 43;
+int cts_io_number = 23;
+
 u_int ms_ticks_per_minutes(int minutes)
 {
   return minutes * 60000;
@@ -16,6 +31,14 @@ u_int ms_ticks_per_minutes(int minutes)
 
 void sample_sensors(void *pvParameter)
 {
+  UARTClient uart_client(
+      uart_config,
+      uart_port_number,
+      tx_io_number,
+      rx_io_number,
+      rts_io_number,
+      cts_io_number);
+
   AnalogInput left_load_cell(ADC_ATTEN_DB_11, ADC1_CHANNEL_0);  // DIO36
   AnalogInput right_load_cell(ADC_ATTEN_DB_11, ADC1_CHANNEL_3); // DIO39
   AnalogInput speed_sensor(ADC_ATTEN_DB_11, ADC1_CHANNEL_6);    // DIO34
