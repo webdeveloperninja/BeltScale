@@ -6,6 +6,7 @@
 #include "AnalogInput.h"
 #include "esp_system.h"
 #include "UARTClient.h"
+#include <string>
 
 u_int sensor_sample_rate_minutes = 1;
 
@@ -59,6 +60,11 @@ void sample_sensors(void *pvParameter)
     printf("\n");
     printf("%.6f", speed_sensor_voltage);
     printf("\n");
+
+    std::string payload = std::to_string(left_load_cell_voltage) + "," + std::to_string(right_load_cell_voltage) + "," + std::to_string(speed_sensor_voltage);
+    printf(payload.c_str());
+
+    uart_client.transmit(payload.c_str());
     vTaskDelay(pdMS_TO_TICKS(ms_ticks_per_minutes(sensor_sample_rate_minutes)));
   }
 }

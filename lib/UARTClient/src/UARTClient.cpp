@@ -59,7 +59,7 @@ void UARTClient::init()
           UARTClient::cts_io_num));
 }
 
-void UARTClient::transmit(char *payload)
+void UARTClient::transmit(const char *payload)
 {
   uart_write_bytes(UARTClient::uart_port_num, payload, sizeof payload);
 }

@@ -15,7 +15,7 @@ public:
 
   void init();
 
-  void transmit(char *payload);
+  void transmit(const char *payload);
 
 private:
   uart_config_t uart_configuration;
