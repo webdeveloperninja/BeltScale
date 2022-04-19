@@ -34,22 +34,6 @@ static void check_efuse(void)
 #endif
 }
 
-static void print_char_val_type(esp_adc_cal_value_t val_type)
-{
-  if (val_type == ESP_ADC_CAL_VAL_EFUSE_TP)
-  {
-    printf("Characterized using Two Point Value\n");
-  }
-  else if (val_type == ESP_ADC_CAL_VAL_EFUSE_VREF)
-  {
-    printf("Characterized using eFuse Vref\n");
-  }
-  else
-  {
-    printf("Characterized using Default Vref\n");
-  }
-}
-
 AnalogInput::AnalogInput(adc_atten_t attenuation, adc1_channel_t adc1_channel)
 {
   AnalogInput::attenuation = attenuation;
@@ -75,5 +59,5 @@ float AnalogInput::get_voltage()
   uint32_t mili_voltage = esp_adc_cal_raw_to_voltage(adc_reading, adc_chars);
   adc_reading = 0;
 
-  return (float)mili_voltage * .0001;
+  return (float)mili_voltage * .001;
 }
