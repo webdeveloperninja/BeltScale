@@ -5,6 +5,7 @@
 #include "esp_spi_flash.h"
 #include "AnalogInput.h"
 #include "esp_system.h"
+#include "UARTClient.h"
 
 u_int sensor_sample_rate_minutes = 1;
 
@@ -47,15 +48,3 @@ extern "C"
     fflush(stdout);
   }
 }
-
-/*
-
-1) Read 3 analog inputs
-    -- Left load cell
-    -- Right load cell
-    -- Speed sensor
-
-2) On an interval send senor data to Comm module
-    -- Default interval n minutes eg: 10 min
-    -- On change interval n minutes. Left load cell changes by x percent eg 2 min
-*/
