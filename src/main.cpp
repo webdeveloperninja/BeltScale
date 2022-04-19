@@ -19,6 +19,10 @@ void sample_sensors(void *pvParameter)
   AnalogInput right_load_cell(ADC_ATTEN_DB_11, ADC1_CHANNEL_3); // DIO39
   AnalogInput speed_sensor(ADC_ATTEN_DB_11, ADC1_CHANNEL_6);    // DIO34
 
+  left_load_cell.calibration_init();
+  right_load_cell.calibration_init();
+  speed_sensor.calibration_init();
+
   for (;;)
   {
     float left_load_cell_voltage = left_load_cell.get_voltage();
